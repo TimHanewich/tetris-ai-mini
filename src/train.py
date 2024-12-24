@@ -17,6 +17,7 @@ epsilon:float = 0.2
 
 # training config
 batch_size:int = 100 # the number of experiences that will be collected and trained on
+save_model_every_experiences:int = 5000
 ################
 
 # construct/load model
@@ -31,6 +32,8 @@ else:
 
 # variables to track
 experiences_trained:int = 0 # the number of experiences the model has been trained on
+model_last_saved_at_experiences_trained:int = 0 # the last number of experiences that the model was trained on
+on_checkpoint:int = 0
 
 # training loop
 while True:
@@ -79,7 +82,6 @@ while True:
         # if game is over or they played an illegal move, reset the game!
         if gs.over() or IllegalMovePlayed:
             gs = tetris.GameState()
-
     print()
 
     # print avg rewards
@@ -117,3 +119,13 @@ while True:
         tai.train(exp.state, qvalues)
         experiences_trained = experiences_trained + 1
     print("Training complete!")
+
+    # save model?
+    if (experiences_trained - model_last_saved_at_experiences_trained) >= save_model_every_experiences:
+        print("Time to save model!")
+        path:str = r"C:\Users\timh\Downloads\tah\tetris-ai-mini\checkpoints\checkpoint" + str(on_checkpoint) + ".keras"
+        tai.save(path)
+        print("Checkpoint # " + str(on_checkpoint) + " saved to " + path + "!")
+        on_checkpoint = on_checkpoint + 1
+        model_last_saved_at_experiences_trained = experiences_trained
+        print("Model saved to " + path + "!")
