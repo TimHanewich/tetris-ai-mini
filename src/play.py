@@ -11,7 +11,8 @@ while True:
 
         i:str = input("How many shifts? > ")
         shifts:int = int(i)
-        gs.drop(shifts)
+        reward = gs.drop(shifts)
+        print("REWARD: " + str(reward))
 
         # if game over
         if gs.over():

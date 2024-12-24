@@ -54,15 +54,18 @@ class GameState:
         """Determines the game is over (if all cols in top row are occupied)."""
         return self.board[0] == [1,1,1,1]
     
-    def drop(self, column:int) -> None:
-        """Drops a single block into the column"""
+    def drop(self, column:int) -> float:
+        """Drops a single block into the column, returns the reward of doing so."""
         if column < 0 or column > 3:
             raise InvalidDropException("Invalid move! Column to drop in must be 0, 1, 2, or 3.")
         
+        reward_before:float = self.score_plus()
         cds:list[int] = self.column_depths()
         if cds[column] == 0:
             raise InvalidDropException("Unable to drop on column " + str(column) + ", it is already full!")
         self.board[cds[column]-1][column] = True
+        reward_after:float = self.score_plus()
+        return reward_after - reward_before
 
     def score(self) -> int:
         ToReturn:int = 0
