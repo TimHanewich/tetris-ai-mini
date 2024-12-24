@@ -27,7 +27,7 @@ class TetrisAI:
 
             # construct the model
             self.model = keras.Model(inputs=input_board, outputs=output)
-            self.model.compile("adam", "mse")
+            self.model.compile(optimizer=keras.optimizers.Adam(learning_rate=0.01), loss="mse")
 
     def save(self, path:str) -> None:
         """Saves the keras model to file"""
