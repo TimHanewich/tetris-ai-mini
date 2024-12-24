@@ -27,7 +27,10 @@ else:
     print("Constructing new model...")
     tai = intelligence.TetrisAI()  
 
+# variables to track
+experiences_trained:int = 0 # the number of experiences the model has been trained on
 
+# training loop
 while True:
 
     # collect X number of experiences
@@ -81,7 +84,7 @@ while True:
     rewards:float = 0.0
     for exp in experiences:
         rewards = rewards + exp.reward
-    print("Average reward over those " + str(len(experiences)) + " experiences: " + str(round(rewards / len(experiences), 2)))
+    print("Average reward over those " + str(len(experiences)) + " experiences on model w/ " + str(experiences_trained) + " trained experiences: " + str(round(rewards / len(experiences), 2)))
     
     # train!
     print(str(len(experiences)) + " experiences collected! Training now...")
@@ -103,3 +106,4 @@ while True:
 
         # now train on the updated qvalues (with 1 changed)
         tai.train(exp.state, qvalues)
+        experiences_trained = experiences_trained + 1
