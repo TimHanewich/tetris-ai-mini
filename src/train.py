@@ -92,7 +92,12 @@ while True:
     
     # train!
     print(str(len(experiences)) + " experiences collected! Training now...")
-    for exp in experiences:
+    for ei in range(0, len(experiences)):
+        exp = experiences[ei]
+
+        # print training number
+        sys.stdout.write("\r" + "Training on experience " + str(ei+1) + " / " + str(len(experiences)) + "... ")
+        sys.stdout.flush()
 
         # determine new target based on the game ending or not (maybe we should factor in future rewards, maybe we shouldnt)
         new_target:float
@@ -111,3 +116,4 @@ while True:
         # now train on the updated qvalues (with 1 changed)
         tai.train(exp.state, qvalues)
         experiences_trained = experiences_trained + 1
+    print("Training complete!")
