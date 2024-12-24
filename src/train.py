@@ -93,7 +93,6 @@ while True:
     print(status)
     
     # train!
-    print(str(len(experiences)) + " experiences collected! Training now...")
     for ei in range(0, len(experiences)):
         exp = experiences[ei]
 
