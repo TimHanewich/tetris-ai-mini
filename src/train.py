@@ -36,7 +36,7 @@ while True:
     for ei in range(0, batch_size):
 
         # print!
-        sys.stdout.write("\r" + "Collecting experience " + str(ei) + "... ")
+        sys.stdout.write("\r" + "Collecting experience " + str(ei) + " / " + str(batch_size) + "... ")
         sys.stdout.flush()
 
         # get board representation
@@ -98,6 +98,3 @@ while True:
 
         # now train on the updated qvalues (with 1 changed)
         tai.train(exp.state, qvalues)
-
-        # clear out the experience memory
-        experiences.clear()

@@ -43,4 +43,4 @@ class TetrisAI:
     def train(self, board:list[int], qvalues:list[float]) -> None:
         x = numpy.array([board])
         y = numpy.array([qvalues])
-        self.model.fit(x, y, epochs=1, verbose=True)
+        self.model.fit(x, y, epochs=1, verbose=False)
