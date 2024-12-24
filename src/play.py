@@ -6,8 +6,6 @@ while True:
     while True:
         print("Board:")
         print(str(gs))
-        print("Current Score: " + str(gs.score()))
-        print("Current Reward: " + str(round(gs.score_plus(), 1)))
 
         i:str = input("How many shifts? > ")
         shifts:int = int(i)
