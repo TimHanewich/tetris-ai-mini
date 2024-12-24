@@ -14,7 +14,7 @@ gamma:float = 0.5
 epsilon:float = 0.2
 
 # training config
-batch_size:int = 300 # the number of experiences that will be collected and trained on
+batch_size:int = 100 # the number of experiences that will be collected and trained on
 ################
 
 # construct/load model
