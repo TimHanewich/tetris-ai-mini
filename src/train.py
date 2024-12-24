@@ -88,7 +88,7 @@ while True:
         rewards = rewards + exp.reward
     status:str = "Average reward over those " + str(len(experiences)) + " experiences on model w/ " + str(experiences_trained) + " trained experiences: " + str(round(rewards / len(experiences), 2))
     tools.log(log_file_path, status)
-    print()
+    print(status)
     
     # train!
     print(str(len(experiences)) + " experiences collected! Training now...")
