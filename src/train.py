@@ -36,7 +36,7 @@ while True:
     for ei in range(0, batch_size):
 
         # print!
-        sys.stdout.write("\r" + "Collecting experience " + str(ei) + " / " + str(batch_size) + "... ")
+        sys.stdout.write("\r" + "Collecting experience " + str(ei+1) + " / " + str(batch_size) + "... ")
         sys.stdout.flush()
 
         # get board representation
@@ -81,10 +81,10 @@ while True:
     rewards:float = 0.0
     for exp in experiences:
         rewards = rewards + exp.reward
-    print("Average reward over those " + str(len(experiences)) + " experiences: " + str(round(rewards / len(experiences), 1)))
+    print("Average reward over those " + str(len(experiences)) + " experiences: " + str(round(rewards / len(experiences), 2)))
     
     # train!
-    print(str(len(experiences)) + " experiences stored! Moving to training now...")
+    print(str(len(experiences)) + " experiences collected! Training now...")
     for exp in experiences:
 
         # determine new target based on the game ending or not (maybe we should factor in future rewards, maybe we shouldnt)
