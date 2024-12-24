@@ -98,3 +98,6 @@ while True:
 
         # now train on the updated qvalues (with 1 changed)
         tai.train(exp.state, qvalues)
+
+        # clear out the experience memory
+        experiences.clear()
