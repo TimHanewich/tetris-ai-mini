@@ -70,6 +70,11 @@ while True:
         exp.next_state = representation.BoardState(gs) # the state we find ourselves in now.
         exp.done = gs.over() or IllegalMovePlayed # it is over if the game is completed OR an illegal move was played
         experiences.append(exp)
+
+        # if game is over or they played an illegal move, reset the game!
+        if gs.over() or IllegalMovePlayed:
+            gs = tetris.GameState()
+
     print()
 
     # print avg rewards
