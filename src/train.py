@@ -5,9 +5,11 @@ import representation
 import math
 import collections
 import random
+import tools
 
 ### SETTINGS ###
 model_save_path = r"" # if you want to start from a checkpoint, fill this in with the path to the .keras file. If wanting to start from a new NN, leave blank!
+log_file_path:str = r"C:\Users\timh\Downloads\tah\tetris-ai-mini\checkpoints\log.txt" # during training, if you want logs to be saved in this file about the progress of performance improvemnts during training, put a path to a txt file here. Logs will be appended.
 
 # training settings
 gamma:float = 0.5
@@ -84,7 +86,9 @@ while True:
     rewards:float = 0.0
     for exp in experiences:
         rewards = rewards + exp.reward
-    print("Average reward over those " + str(len(experiences)) + " experiences on model w/ " + str(experiences_trained) + " trained experiences: " + str(round(rewards / len(experiences), 2)))
+    status:str = "Average reward over those " + str(len(experiences)) + " experiences on model w/ " + str(experiences_trained) + " trained experiences: " + str(round(rewards / len(experiences), 2))
+    tools.log(log_file_path, status)
+    print()
     
     # train!
     print(str(len(experiences)) + " experiences collected! Training now...")
