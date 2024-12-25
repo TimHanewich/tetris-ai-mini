@@ -6,7 +6,7 @@ import random
 import os
 
 ### SETTINGS ###
-model_save_path = r"C:\Users\timh\Downloads\tah\tetris-ai-mini\checkpoints\checkpoint16.keras"
+model_save_path = r"C:\Users\timh\Downloads\tah\tetris-ai-mini\checkpoints\stupid.keras"
 images_save_folder = r"../game_images"
 moves:int = 500 # how many moves to play as part of this demo
 ################
@@ -50,16 +50,29 @@ for move in range(0, moves):
     shift:int = predictions.index(max(predictions))
 
     # make move
-    gs.drop(shift)
+    IllegalMoveMade:bool = False
+    try:
+        gs.drop(shift)
+    except tetris.InvalidDropException as ex:
+        print("Invalid move!")
+        IllegalMoveMade = True
 
-    # determine which square that was just filled in that we should highlight
-    cds:list[int] = gs.column_depths()
-    highlight:tuple[int, int] = (cds[shift], shift)
+    if IllegalMoveMade == False:
 
-    # save image of game
-    visuals.genimg(gs, next_save_path(), highlight, onGame)
+        # determine which square that was just filled in that we should highlight
+        cds:list[int] = gs.column_depths()
+        highlight:tuple[int, int] = (cds[shift], shift)
 
-    # if that last move the model played ended the game (now 16 squares are filled), generate a few more frames
-    if gs.over():
+        # save image of game
+        visuals.genimg(gs, next_save_path(), highlight, onGame)
+
+        # if that last move the model played ended the game (now 16 squares are filled), generate a few more frames
+        if gs.over():
+            for _ in range(0, 5):
+                visuals.genimg(gs, next_save_path(), highlight, onGame)
+    
+    else: # move was illegal!
+
+        # generate illegal
         for _ in range(0, 5):
-            visuals.genimg(gs, next_save_path(), highlight, onGame)
+            visuals.genimg(gs, next_save_path(), None, onGame, shift)
