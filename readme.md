@@ -21,3 +21,6 @@ You can also export to a GIF
 ```
 ffmpeg -i %06d.png -r 15 output.gif
 ```
+
+## Other Misc. Resources
+- The 4x4 grid used in the visuals was designe in PowerPoint. Deck [here](https://github.com/TimHanewich/tetris-ai-mini/releases/download/2/grid.pptx).
