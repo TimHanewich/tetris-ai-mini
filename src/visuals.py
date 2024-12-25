@@ -1,5 +1,7 @@
 import tetris
 import PIL.Image
+import PIL.ImageDraw
+import PIL.ImageFont
 
 def genimg(gs:tetris.GameState, save_path:str) -> None:
     grid_img_path:str = r"C:\Users\timh\Downloads\tah\tetris-ai-mini\assets\grid.png"
@@ -10,6 +12,10 @@ def genimg(gs:tetris.GameState, save_path:str) -> None:
         for ci in range(0, len(gs.board[ri])):
             if gs.board[ri][ci]:
                 fillsquare(img, ri, ci)
+
+    # draw the score
+    draw:PIL.ImageDraw.Draw = PIL.ImageDraw.Draw(img)
+    draw.text((0,543), "SCORE: " + str(gs.score()), (127, 127, 127), font=PIL.ImageFont.truetype("arial.ttf", 36))
 
     img.save(save_path)
     
