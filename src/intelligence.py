@@ -18,7 +18,7 @@ class TetrisAI:
             self.model = keras.models.load_model(save_file_path) # load from file path
         else:
 
-            # built layers
+            # build layers
             input_board = keras.layers.Input(shape=(16,), name="input_board")
             carry = keras.layers.Dense(64, "relu", name="layer1")(input_board)
             carry = keras.layers.Dense(64, "relu", name="layer2")(carry)
