@@ -8,7 +8,7 @@ import os
 ### SETTINGS ###
 model_save_path = r"C:\Users\timh\Downloads\tah\tetris-ai-mini\checkpoints\stupid.keras"
 images_save_folder = r"../game_images"
-moves:int = 100 # how many moves to play as part of this demo
+moves:int = 500 # how many moves to play as part of this demo
 ################
 
 if os.path.exists(images_save_folder) == False:
