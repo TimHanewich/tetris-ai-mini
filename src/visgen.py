@@ -8,7 +8,7 @@ import os
 ### SETTINGS ###
 model_save_path = r"C:\Users\timh\Downloads\tah\tetris-ai-mini\checkpoints\stupid.keras"
 images_save_folder = r"../game_images"
-moves:int = 500 # how many moves to play as part of this demo
+moves:int = 100 # how many moves to play as part of this demo
 ################
 
 if os.path.exists(images_save_folder) == False:
@@ -28,13 +28,14 @@ def next_save_path() -> str:
     return path
 
 # generate!
+IllegalMoveMade:bool = False
 gs:tetris.GameState = tetris.GameState()
 for move in range(0, moves):
 
     print("On move " + str(move+1) + " / " + str(moves) + "... ")
 
     # create next game if needed
-    if gs == None or gs.over():
+    if gs == None or gs.over() or IllegalMoveMade:
         print("We need to generate a new game!")
         gs = tetris.GameState()
         if random.random() <= 0.95:
@@ -74,5 +75,5 @@ for move in range(0, moves):
     else: # move was illegal!
 
         # generate illegal
-        for _ in range(0, 5):
+        for _ in range(0, 8):
             visuals.genimg(gs, next_save_path(), None, onGame, shift)

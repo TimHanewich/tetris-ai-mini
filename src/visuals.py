@@ -26,7 +26,7 @@ def genimg(gs:tetris.GameState, save_path:str, hightlight_square:tuple[int,int] 
 
     # print illegal move?
     if illegal_move != None:
-        draw.text((145, 263), "MOVE '" + str(illegal_move) + "' ILLEGAL!", (255,0,0), font=PIL.ImageFont.truetype("arial.ttf", 36))
+        draw.text((142, 20), "MOVE '" + str(illegal_move) + "' ILLEGAL!", (255,0,0), font=PIL.ImageFont.truetype("arial.ttf", 36))
 
     img.save(save_path)
     
