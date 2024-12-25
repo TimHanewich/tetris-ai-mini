@@ -3,7 +3,7 @@ import PIL.Image
 import PIL.ImageDraw
 import PIL.ImageFont
 
-def genimg(gs:tetris.GameState, save_path:str, hightlight_square:tuple[int,int] = None) -> None:
+def genimg(gs:tetris.GameState, save_path:str, hightlight_square:tuple[int,int] = None, game_number:int = None) -> None:
     grid_img_path:str = r"C:\Users\timh\Downloads\tah\tetris-ai-mini\assets\grid.png"
     img:PIL.Image.Image = PIL.Image.open(grid_img_path)
 
@@ -19,6 +19,10 @@ def genimg(gs:tetris.GameState, save_path:str, hightlight_square:tuple[int,int] 
     # draw the score
     draw:PIL.ImageDraw.Draw = PIL.ImageDraw.Draw(img)
     draw.text((0,543), "SCORE: " + str(gs.score()), (127, 127, 127), font=PIL.ImageFont.truetype("arial.ttf", 36))
+
+    # print game number?
+    if game_number != None:
+        draw.text((0, 505), "GAME: " + str(game_number), (127,127,127), font=PIL.ImageFont.truetype("arial.ttf", 36))
 
     img.save(save_path)
     
