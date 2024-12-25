@@ -1,4 +1,7 @@
 # Tetris AI Mini
+Training an AI (neural network) to play a *very* simplified version of 4x4 Tetris using [Q-Learning](https://en.wikipedia.org/wiki/Q-learning#:~:text=Q%2Dlearning%20is%20a%20model,being%20in%20a%20particular%20state.).
+
+![example](https://i.imgur.com/1sBHFrA.gif)
 
 ## Model Checkpoints
 |Checkpoint|Commit|Description|
