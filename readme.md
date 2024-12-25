@@ -15,7 +15,7 @@ For example, consider the position below:
 
 ![pos](https://i.imgur.com/5AFmsZe.png)
 
-If the model doesn't understand the game and is essentially playing at random, there is a 25% chance it will choose to drop a square into column 4 (the column on the far right). This would be an *illegal* move, invalidating the game. 
+If the model doesn't understand the game and is essentially playing at random, there is a 25% chance it will choose to drop a square into column 4 (the column on the far right). This would be an *illegal* move, invalidating the game and not allowing the AI to reach the 100% score of 16!
 
 My goal in training this model is for the model to play the game effectively and productively, avoiding illegal moves.
 
