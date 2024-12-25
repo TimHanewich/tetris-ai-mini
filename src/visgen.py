@@ -7,7 +7,7 @@ import os
 
 ### SETTINGS ###
 model_save_path = r"C:\Users\timh\Downloads\tah\tetris-ai-mini\checkpoints\checkpoint16.keras"
-images_save_folder = r"C:\Users\timh\Downloads\tah\tetris-ai-mini\game_images"
+images_save_folder = r"../game_images"
 ################
 
 if os.path.exists(images_save_folder) == False:
