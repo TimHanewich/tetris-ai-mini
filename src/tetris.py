@@ -1,4 +1,5 @@
 import statistics
+import random
 
 class InvalidDropException(Exception):
     def __init__(self, message):
@@ -85,3 +86,21 @@ class GameState:
         ToReturn = ToReturn - (stdev * 2)
 
         return ToReturn
+    
+    def randomize(self) -> float:
+        """Sets the board to a random setup."""
+
+        # first, clear all values
+        for ri in range(0, len(self.board)):
+            for ci in range(0, len(self.board[0])):
+                self.board[ri][ci] = False
+        
+        # drop a random number in each column
+        for ci in range(0, 4):
+            random_drops:int = random.randint(0, 4)
+            for _ in range(0, random_drops):
+                self.drop(ci)
+
+        # if all 16 are filled up, delete one
+        if self.score() == 16:
+            self.board[0][random.randint(0, 3)] = False # turn off a random square in the top row
