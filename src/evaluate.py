@@ -23,6 +23,7 @@ while True:
 
         # if game over
         if gs.over():
+            print(str(gs))
             print("Game is over!")
             print("Final score: " + str(gs.score()))
             print("Going to next game...")
