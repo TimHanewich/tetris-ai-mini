@@ -4,7 +4,7 @@ import PIL.ImageDraw
 import PIL.ImageFont
 
 def genimg(gs:tetris.GameState, save_path:str, hightlight_square:tuple[int,int] = None, game_number:int = None) -> None:
-    grid_img_path:str = r"C:\Users\timh\Downloads\tah\tetris-ai-mini\assets\grid.png"
+    grid_img_path:str = "../assets/grid.png"
     img:PIL.Image.Image = PIL.Image.open(grid_img_path)
 
     # fill squares
