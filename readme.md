@@ -7,3 +7,8 @@
 
 ## Notable Commits
 - `a02de2357791f170b9f9090347a22e72646fde73` - first version to confirm training works! This approach works as the model learned to play the game perfectly.
+
+## Use FFMPEG to stitch images into video
+```
+ffmpeg -i %06d.png -r 30 output.mp4
+```
