@@ -29,9 +29,9 @@ def next_save_path() -> str:
 
 # generate!
 gs:tetris.GameState = tetris.GameState()
-for move in range(0, 60):
+for move in range(0, moves):
 
-    print("On move " + str(move) + "... ")
+    print("On move " + str(move+1) + " / " + str(moves) + "... ")
 
     # create next game if needed
     if gs == None or gs.over():
