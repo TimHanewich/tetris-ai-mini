@@ -3,7 +3,7 @@ import PIL.Image
 import PIL.ImageDraw
 import PIL.ImageFont
 
-def genimg(gs:tetris.GameState, save_path:str) -> None:
+def genimg(gs:tetris.GameState, save_path:str, hightlight_square:tuple[int,int] = None) -> None:
     grid_img_path:str = r"C:\Users\timh\Downloads\tah\tetris-ai-mini\assets\grid.png"
     img:PIL.Image.Image = PIL.Image.open(grid_img_path)
 
@@ -11,7 +11,10 @@ def genimg(gs:tetris.GameState, save_path:str) -> None:
     for ri in range(0, len(gs.board)):
         for ci in range(0, len(gs.board[ri])):
             if gs.board[ri][ci]:
-                fillsquare(img, ri, ci)
+                if hightlight_square != None and hightlight_square[0] == ri and hightlight_square[1] == ci:
+                    fillsquare(img, ri, ci, (255,0,0))
+                else: # fill with normal color
+                    fillsquare(img, ri, ci)
 
     # draw the score
     draw:PIL.ImageDraw.Draw = PIL.ImageDraw.Draw(img)
@@ -19,7 +22,7 @@ def genimg(gs:tetris.GameState, save_path:str) -> None:
 
     img.save(save_path)
     
-def fillsquare(img:PIL.Image.Image, row:int, col:int) -> None:
+def fillsquare(img:PIL.Image.Image, row:int, col:int, color:tuple[int, int, int] = (153,223,225)) -> None:
     
     # settings (custom to the grid image)
     top_left_corner_xy:int = 98  # where the top left corner of the top left square starts
@@ -34,4 +37,4 @@ def fillsquare(img:PIL.Image.Image, row:int, col:int) -> None:
 
     for x in range(start_x, stop_x):
         for y in range(start_y, stop_y):
-            img.putpixel((x,y), (153,223,225))
+            img.putpixel((x,y), color)
