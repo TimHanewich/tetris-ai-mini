@@ -6,7 +6,7 @@ import random
 import os
 
 ### SETTINGS ###
-model_save_path = r"C:\Users\timh\Downloads\tah\tetris-ai-mini\checkpoints\stupid.keras"
+model_save_path = r"C:\Users\timh\Downloads\checkpoint16.keras"
 images_save_folder = r"../game_images"
 moves:int = 500 # how many moves to play as part of this demo
 ################
