@@ -125,6 +125,16 @@ You can download my trained model from the **Model Checkpoints** section below a
 ![example](https://i.imgur.com/1sBHFrA.gif)
 
 ## Exaplanation of Code Files
+All code is available in the [src folder](./src/):
+- [tetris.py](./src/tetris.py) - The core Tetris game engine. Capable of representing the game board, "dropping" squares into columns, and determining rewards for specific moves.
+- [play.py](./src/play.py) - If you want to try playing the game of Tetris yourself with your keyboard, run this!
+- [representation.py](./src/representation.py) - Specialized in converting the core Tetris game board (`GameState`) to a flattened list of integers that can be inputted into a neural network (a numeric representation of the game board).
+- [intellience.py](./src/intelligence.py) - Contains the `TetrisAI` class, a higher-level class focused on creating, manipulating, and training the custom-build neural network.
+- [train.py](./src/train.py) - The training script. Applies Q-Learning to train the Tetris AI to play the game through reinforcement learning. 
+- [evaluate.py](./src/evaluate.py) - After you train and save a model via the [train.py](./src/train.py) script, load the model into [evaluate.py](./src/evaluate.py) to observe it playing move by move.
+- [visuals.py](./src/visuals.py) - Simple functions I wrote to generate a graphical representation of the board at any state in the game.
+- [visgen.py](./src/visgen.py) - Uses the [visuals.py](./src/visuals.py) to generate a series of frames of the AI playing that can be stitched together via FFMPEG.
+- [tools.py](./src/tools.py) - Simple tools used throughout this project.
 
 ## Model Checkpoints
 |Checkpoint|Commit|Description|
