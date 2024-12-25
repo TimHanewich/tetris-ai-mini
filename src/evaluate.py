@@ -28,4 +28,5 @@ while True:
             print("Final score: " + str(gs.score()))
             print("Going to next game...")
             gs = tetris.GameState()
+            gs.randomize()
 
