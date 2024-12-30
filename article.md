@@ -63,7 +63,7 @@ The board state in the image above can be represented as the following array of 
 [0, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1]
 ```
 
-So, our neural network will consider **16 inputs** when evaluating a position and what move to play next. What about outputs? In Q-Learning, the neural network is designed to predict the "Q-Value", or estiamted current/future rewards, for every possible move in any given state. Since the game we are playing has **4 potential moves** (drop a square in column 1, 2, 3, or 4), our neural network will have **4 outputs**.
+So, our neural network will consider **16 inputs** when evaluating a position and what move to play next. What about outputs? In Q-Learning, the neural network is designed to predict the "Q-Value", or estimated current/future rewards, for every possible move in any given state. Since the game we are playing has **4 potential moves** (drop a square in column 1, 2, 3, or 4), our neural network will have **4 outputs**.
 
 Our neural network will also have several **hidden layers**, which are mathematical layers of neurons that are connected between the input and output layers. These hidden layers serve as "the brain" of the neural network, constantly adjusting through training to "learn" the nature of the game and relationship between states, moves, and their associated reward.
 
@@ -87,7 +87,7 @@ As mentioned above, the neural network is designed to approximate the **Q-Value*
 
 But, how will the model intrinsically know which moves are "good", which are "not so good", and which are "bad"? That is where we, as the human designing this process, need to give the AI agent a bit of guidance. This guidance is called *the reward function*.
 
-In short, the reward function is just a simple fuction we will write to mathematically calculate *how good* any potential move is. Remember, for each move the AI makes, it observers what **reward** it got for making that move. We are the ones that define a high-level function that can roughly calculate if the move was good or bad. 
+In short, the reward function is just a simple function we will write to mathematically calculate *how good* any potential move is. Remember, for each move the AI makes, it observers what **reward** it got for making that move. We are the ones that define a high-level function that can roughly calculate if the move was good or bad. 
 
 The reward function I used for this mini Tetris AI is quite simple and can be found in the `score_plus()` function in the `GameState` class in the [`tetris` module](src/tetris.py):
 
@@ -120,7 +120,7 @@ More specifically, the following is the boiled-down training process. The full t
 1. Initialize a new neural network.
 2. Collect a few hundred **state, action, reward** experiences through a combination of selecting the moves the model *thinks are best* (
     1. Convert the state of the current game to a list of integers.
-    2. Select a move to play based on what the model *thinks* is best but is probably not because the model doesn't know anything yet!)  or a random move. A random move is occasionally selected to encourage **exploration**. Read more about exploratation vs. exploration [here](https://en.wikipedia.org/wiki/Exploration-exploitation_dilemma).
+    2. Select a move to play based on what the model *thinks* is best but is probably not because the model doesn't know anything yet!)  or a random move. A random move is occasionally selected to encourage **exploration**. Read more about exploration vs. exploitation [here](https://en.wikipedia.org/wiki/Exploration-exploitation_dilemma).
     3. Execute (play) the move and observe the reward that was given for that move.
     4. Store this **state, action, reward** "experience" into a collection.
 3. Loop through all of these collected **state, action, reward** experiences, one by one, each time training on the experience (updating the neural networks weights) to better approximate the correct reward given a state and action.
@@ -132,7 +132,7 @@ More specifically, the following is the boiled-down training process. The full t
 4. Repeat the above steps repeatedly until the model learns how to play the game effectively and legally!
 
 ## The Results
-After setting up the training process described above in the [train.py](./src/train.py) module, I let this run for ~4 hours. After training on 85,000 **state, action, reward** experiences over these 4 hours, my model successfully learned to play the game **perfectly**. The model plays the game pefectly from **any state** - from a new game position (blank board) or even a "randomized" position. Every time the game plays, it always scores 16 (perfect score) for each "game" and never makes an illegal move.
+After setting up the training process described above in the [train.py](./src/train.py) module, I let this run for ~4 hours. After training on 85,000 **state, action, reward** experiences over these 4 hours, my model successfully learned to play the game **perfectly**. The model plays the game perfectly from **any state** - from a new game position (blank board) or even a "randomized" position. Every time the game plays, it always scores 16 (perfect score) for each "game" and never makes an illegal move.
 
 My model trained on 85,000 experiences (moves), but I don't think this many was necessary. As it appears in the training log file, optimal performance seemed to be achieved around the 4,500 experience (move) mark.
 
