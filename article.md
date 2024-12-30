@@ -15,7 +15,7 @@ For example, consider the position below:
 
 If the model doesn't understand the game and is essentially playing at random, there is a 25% chance it will choose to drop a square into column 4 (the column on the far right). This would be an *illegal* move, invalidating the game and not allowing the AI to reach the 100% score of 16!
 
-My goal in training this model is for the model to play the game effectively and productively, avoiding illegal moves.
+My goal in training this model is for the model to play the game effectively and productively, avoiding illegal moves, and **reaching a top score of 16 in every game**.
 
 ## The Method: Q-Learning
 To train an AI to play this simplified game of Tetris, we will use [Q-Learning](https://en.wikipedia.org/wiki/Q-learning#:~:text=Q%2Dlearning%20is%20a%20model,being%20in%20a%20particular%20state.). Q-Learning is a type of reinforcement learning algorithm in machine learning. The goal of Q-Learning is to find the optimal action-selection policy for any potential game state. But what does that mean? 
