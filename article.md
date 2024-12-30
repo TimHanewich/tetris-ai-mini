@@ -1,4 +1,6 @@
 # How I trained a Neural Network to Play Tetris Using Reinforcement Learning
+![img](https://i.imgur.com/dkZZUtS.jpeg)
+
 Over the Christmas/New Year holiday break of December 2024, I learned and applied [Q-Learning](https://en.wikipedia.org/wiki/Q-learning), a form of [Reinforcement Learning](https://en.wikipedia.org/wiki/Reinforcement_learning) to train a neural network to play a simplified game of Tetris. In this article I'll detail how I applied Q-Learning. I hope this is helpful for anything interested in applying reinforcement learning to a new field!
 
 As you can see in the GIF below, the model successfully "learned" how to effectively and efficiently play a simplified game of Tetris after training over 6,000 games, or 85,000 individual moves:
