@@ -82,6 +82,8 @@ self.model = keras.Model(inputs=input_board, outputs=output)
 self.model.compile(optimizer=keras.optimizers.Adam(learning_rate=0.003), loss="mse")
 ```
 
+To see the code that constructs and trains the neural network, check it out on GitHub [here](https://github.com/TimHanewich/tetris-ai-mini/blob/master/src/intelligence.py). To see how a game state is converted to a flattened integer array representation, check out that conversion function [here](https://github.com/TimHanewich/tetris-ai-mini/blob/master/src/representation.py).
+
 ## The Reward Function
 As mentioned above, the neural network is designed to approximate the **Q-Value** of each potential move from any given state of the game. "Q-Value" is just a fancy term for a blend of current and future rewards (i.e. "in the immediate term and long term, how well will this move serve me?"). If the model is able to approximate the reward for all four possible moves from any state, the model can simply pick the move that it thinks will return the greatest reward as the **suggested next optimal move**.
 
@@ -130,6 +132,8 @@ More specifically, the following is the boiled-down training process. The full t
     4. "Correct" the model by training it against the **correct Q-Value** calculated above in step 1.
     5. Do this over and over for every experience.
 4. Repeat the above steps repeatedly until the model learns how to play the game effectively and legally!
+
+Check out the full training script on GitHub [here](https://github.com/TimHanewich/tetris-ai-mini/blob/master/src/train.py).
 
 ## The Results
 After setting up the training process described above in the [train.py](./src/train.py) module, I let this run for ~4 hours. After training on 85,000 **state, action, reward** experiences over these 4 hours, my model successfully learned to play the game **perfectly**. The model plays the game perfectly from **any state** - from a new game position (blank board) or even a "randomized" position. Every time the game plays, it always scores 16 (perfect score) for each "game" and never makes an illegal move.
